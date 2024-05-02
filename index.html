@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Experience Cloud Consultant Exam Guide Analyzer</title>
+<style>
+    textarea { width: 300px; height: 150px; }
+    button { padding: 5px 15px; }
+    #results { margin-top: 20px; }
+</style>
+</head>
+<body>
+    <h1>Exam Topics Analyzer</h1>
+    <textarea id="inputText"></textarea><br>
+    <button onclick="analyzeText()">解析</button>
+    <div id="results"></div>
+
+    <script>
+        function analyzeText() {
+            var text = document.getElementById('inputText').value;
+            var pattern = /([^\n:]+): (\d+)%/g;
+            var results = '';
+            var match;
+
+            while (match = pattern.exec(text)) {
+                results += match[1] + ': ' + match[2] + '%<br>';
+            }
+
+            document.getElementById('results').innerHTML = results;
+        }
+    </script>
+</body>
+</html>
